@@ -38,6 +38,7 @@
         {
             "type": "shell",
             "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+            "execute_command": "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/ansible-hosts.cfg"
             "scripts": [
                 "scripts/update.sh",
                 "scripts/install_ansible.sh",

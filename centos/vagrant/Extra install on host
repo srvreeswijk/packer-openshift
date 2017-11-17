@@ -1,0 +1,22 @@
+Extra install on host
+
+vagrant
+packer
+apt install libvirt-bin
+apt-get install qemu libvirt-bin ebtables dnsmasq
+apt-get install libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev
+
+Mijn versie van git repo met packer files
+Virtualization with virt-manager:
+# apt-get install qemu-system
+# apt-get install qemu-utils
+# apt-get install libvirt-bin
+# apt-get install virt-manager
+
+Installing SPICE for KVM remote and local access to VMs
+# apt-get install python-spice-client-gtk
+# apt-get install virt-viewer
+
+apt-get install qemu libvirt-bin ebtables dnsmasq
+apt-get install libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev
+vagrant plugin install vagrant-libvirt
