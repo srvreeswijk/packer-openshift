@@ -1,32 +1,50 @@
-# -*- mode: ruby -*-
+ # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
 
 # all config options can be found at: https://github.com/vagrant-libvirt/vagrant-libvirt#installation
+$script = <<SCRIPT
+echo I am provisioning...
+date > /etc/vagrant_provisioned_at
+git clone https://github.com/openshift/openshift-ansible.git /home/vagrant/openshift-ansible
+chown vagrant /home/vagrant/openshift-ansible
+sudo mv /etc/ansible/hosts /etc/ansible/hosts.bak
+sudo cp /vagrant/ansible-hosts.cfg /etc/ansible/hosts
+SCRIPT
+
 Vagrant.configure("2") do |config|
-  config.vm.box = "centos7libvirt"
+  config.vm.box = "centos7qemu"
+  config.vm.provision "shell", inline: $script
+  
   config.vm.provider :libvirt do |libvirt|
     libvirt.channel :type => 'unix', :target_name => 'org.qemu.guest_agent.0', :target_type => 'virtio'
   end
 
-  config.vm.define :master do |master|
-    master.vm.hostname = master1.vialis.local
-    master.vm.provider :libvirt do |domain|
+  config.vm.define :master do |master1|
+    master1.vm.hostname = "master1.vialis.local"
+    master1.vm.provider :libvirt do |domain|
       domain.memory = 2048
       domain.cpus = 2
       domain.machine_virtual_size = 20
     end
-    master.vm.provision :ansible do |ansible|
+    master1.vm.provision :ansible_local do |ansible|
         # Disable default limit to connect to all the machines
-        ansible.force_remote_user = false
-        ansible.inventory_path = "ansible-hosts.cfg"
+        #ansible.force_remote_user = false     # only applicable with normal ansible, not ansible_local
+        #ansible.inventory_path = "/vagrant/ansible-hosts.cfg"
+        ansible.verbose = true
         ansible.limit = "all"
-        ansible.playbook = "openshift-ansible/playbooks/byo/config.yml"
+        ansible.become_user = "root"
+        ansible.become = true
+        ansible.playbook = "/home/vagrant/openshift-ansible/playbooks/byo/config.yml"
+        ansible.groups = {
+          "masters" => ["master"],
+          "nodes"   => ["node1"]
+        }
       end
   end
 
   config.vm.define :node1 do |node1|
-    node1.vm.hostname = node1.vialis.local
+    node1.vm.hostname = "node1.vialis.local"
     node1.vm.provider :libvirt do |domain|
       domain.memory = 2048
       domain.cpus = 2

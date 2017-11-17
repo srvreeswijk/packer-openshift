@@ -1,0 +1,4 @@
+---
+- include: ../../init/main.yml
+
+- include: ../../common/openshift-master/additional_config.yml

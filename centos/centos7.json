@@ -38,7 +38,6 @@
         {
             "type": "shell",
             "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
-            "execute_command": "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/ansible-hosts.cfg"
             "scripts": [
                 "scripts/update.sh",
                 "scripts/install_ansible.sh",
@@ -51,8 +50,9 @@
     "post-processors": [
         {
             "keep_input_artifact": true,
-            "output": "box/centos-7_x86_64-server.box",
-            "type": "vagrant"
+            "output": "box/centos7qemu.box",
+            "type": "vagrant",
+            "vagrantfile_template": "vagrant/Vagrantfile"
         }
     ]
 }

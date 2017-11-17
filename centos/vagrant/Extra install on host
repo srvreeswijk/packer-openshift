@@ -20,3 +20,6 @@ Installing SPICE for KVM remote and local access to VMs
 apt-get install qemu libvirt-bin ebtables dnsmasq
 apt-get install libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev
 vagrant plugin install vagrant-libvirt
+
+
+"execute_command": "sudo yum install -y git && git clone https://github.com/srvreeswijk/packer-openshift",
