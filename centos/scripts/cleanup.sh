@@ -3,9 +3,9 @@ sed -i '/HWADDR/d' /etc/sysconfig/network-scripts/ifcfg-eth0
 sed -i "/^UUID/d" /etc/sysconfig/network-scripts/ifcfg-eth0
 
 #disable selinux
-rm /etc/sysconfig/selinux
-ln -s /etc/selinux/config /etc/sysconfig/selinux
-sed -i "s/^\(SELINUX=\).*/\1disabled/g" /etc/selinux/config
+#rm /etc/sysconfig/selinux
+#ln -s /etc/selinux/config /etc/sysconfig/selinux
+#sed -i "s/^\(SELINUX=\).*/\1disabled/g" /etc/selinux/config
 
 #remove any ssh keys or persistent routes, dhcp leases
 rm -f /etc/ssh/ssh_host_*
