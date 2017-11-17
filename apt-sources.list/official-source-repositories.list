@@ -1,0 +1,8 @@
+deb-src http://ftp.nluug.nl/os/Linux/distr/linuxmint/packages sonya main upstream import backport 
+
+deb-src http://mirror.nforce.com/pub/linux/ubuntu xenial main restricted universe multiverse
+deb-src http://mirror.nforce.com/pub/linux/ubuntu xenial-updates main restricted universe multiverse
+deb-src http://mirror.nforce.com/pub/linux/ubuntu xenial-backports main restricted universe multiverse
+
+deb-src http://security.ubuntu.com/ubuntu/ xenial-security main restricted universe multiverse
+deb-src http://archive.canonical.com/ubuntu/ xenial partner

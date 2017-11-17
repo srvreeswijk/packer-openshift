@@ -6,6 +6,8 @@ apt install libvirt-bin
 apt-get install qemu libvirt-bin ebtables dnsmasq
 apt-get install libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev
 
+vagrant plugin install libvirt
+
 Mijn versie van git repo met packer files
 Virtualization with virt-manager:
 # apt-get install qemu-system
