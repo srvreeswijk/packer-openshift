@@ -1,0 +1,35 @@
+archipel-agent-hypervisor-network - Virtual Machine Orchestration (Agent Hypervisor Network)
+bit-babbler - BitBabbler hardware TRNG and kernel entropy source support
+libsys-virt-perl - Perl module providing an extension for the libvirt library
+libnss-libvirt - nss plugin providing IP add ress resolution for virtual machines
+libvirt-clients - Programs for the libvirt library
+libvirt-daemon - Virtualization daemon
+libvirt-daemon-system - Libvirt daemon configuration files
+libvirt-dev - development files for the libvirt library
+libvirt-doc - documentation for the libvirt library
+libvirt-sanlock - Sanlock plugin for virtlockd
+libvirt0 - library for interfacing with different virtualization systems
+gir1.2-libvirt-glib-1.0 - GObject introspection files for the libvirt-glib library
+libvirt-glib-1.0-0 - libvirt GLib and GObject mapping library
+libvirt-glib-1.0-dev - Development files for the libvirt-glib library
+php-libvirt-php - libvirt bindings for PHP
+python-libvirt - libvirt Python bindings
+python3-libvirt - libvirt Python 3 bindings
+mom - Dynamically manage system resources on virtualization hosts
+munin-libvirt-plugins - Munin plugins using libvirt
+nagios-plugins-contrib - Plugins for nagios compatible monitoring systems
+nbdkit-plugin-libvirt - libvirt plugin for nbdkit
+libvirt-ocaml - OCaml bindings for libvirt (runtime)
+libvirt-ocaml-dev - OCaml bindings for libvirt (development files)
+resource-agents - Cluster Resource Agents
+ruby-fog-libvirt - Module for the 'fog' gem to support libvirt
+ruby-libvirt - Ruby bindings for libvirt
+libsanlock-client1 - Shared storage lock manager (client library)
+vagrant-libvirt - Vagrant plugin that adds an Libvirt provider to Vagrant
+vagrant-mutate - convert vagrant boxes to work with different providers
+vagrant-sshfs - vagrant plugin that adds synced folder support with sshfs
+virt-goodies - A collection of helpful virtualisation related tools
+virtinst - Programs to create and clone virtual machines
+virt-top - show stats of virtualized domains
+libvirtodbc0 - high-performance database - ODBC libraries
+libvirtuoso5.5-cil - high-performance database - Mono assemblies

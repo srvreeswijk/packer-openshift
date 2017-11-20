@@ -6,9 +6,10 @@ sudo apt-get install docker
 
 # From: https://github.com/vagrant-libvirt/vagrant-libvirt#installation
 sudo apt-get build-dep vagrant ruby-libvirt
-sudo apt-get install qemu libvirt-bin ebtables dnsmasq
+sudo apt-get install qemu libvirt-bin ebtables dnsmasq libvirt-clients
 sudo apt-get install libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev
+vagrant plugin install libvirt
 
-vagrant plugin install vagrant-libvirt
+# vagrant plugin install vagrant-libvirt
 
 

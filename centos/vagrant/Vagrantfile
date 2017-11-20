@@ -1,5 +1,6 @@
- # -*- mode: ruby -*-
+# -*- mode: ruby -*-
 # vi: set ft=ruby :
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'libvirt'
 
 
 # all config options can be found at: https://github.com/vagrant-libvirt/vagrant-libvirt#installation
@@ -20,36 +21,48 @@ Vagrant.configure("2") do |config|
     libvirt.channel :type => 'unix', :target_name => 'org.qemu.guest_agent.0', :target_type => 'virtio'
   end
 
-  config.vm.define :master do |master1|
-    master1.vm.hostname = "master1.vialis.local"
-    master1.vm.provider :libvirt do |domain|
-      domain.memory = 2048
+  config.vm.define :master1 do |master|
+    master.vm.hostname = "master.vialis.local"
+    master.vm.provider :libvirt do |domain|
+      domain.memory = 8192
       domain.cpus = 2
-      domain.machine_virtual_size = 20
+      domain.machine_virtual_size = 50
     end
-    master1.vm.provision :ansible_local do |ansible|
+    master.vm.provision :ansible_local do |ansible|
         # Disable default limit to connect to all the machines
-        #ansible.force_remote_user = false     # only applicable with normal ansible, not ansible_local
         #ansible.inventory_path = "/vagrant/ansible-hosts.cfg"
         ansible.verbose = true
-        ansible.limit = "all"
+        ansible.limit = "master1"
         ansible.become_user = "root"
         ansible.become = true
         ansible.playbook = "/home/vagrant/openshift-ansible/playbooks/byo/config.yml"
-        ansible.groups = {
-          "masters" => ["master"],
-          "nodes"   => ["node1"]
-        }
+        #ansible.groups = {
+        #  "masters" => ["master1"],
+        #  "nodes"   => ["node1"]
+        #}
       end
   end
 
-  config.vm.define :node1 do |node1|
-    node1.vm.hostname = "node1.vialis.local"
-    node1.vm.provider :libvirt do |domain|
-      domain.memory = 2048
+  config.vm.define :node1 do |node|
+    node.vm.hostname = "node1.vialis.local"
+    node.vm.provider :libvirt do |domain|
+      domain.memory = 4096
       domain.cpus = 2
-      domain.machine_virtual_size = 25
+      domain.machine_virtual_size = 50
     end
+    node.vm.provision :ansible_local do |ansible|
+        # Disable default limit to connect to all the machines
+        #ansible.inventory_path = "/vagrant/ansible-hosts.cfg"
+        ansible.verbose = true
+        ansible.limit = "node1"
+        ansible.become_user = "root"
+        ansible.become = true
+        ansible.playbook = "/home/vagrant/openshift-ansible/playbooks/byo/config.yml"
+        #ansible.groups = {
+        #  "masters" => ["master1"],
+        #  "nodes"   => ["node1"]
+        #}
+      end
   end
 
 
