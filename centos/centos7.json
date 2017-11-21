@@ -24,10 +24,10 @@
 
             "ssh_username": "{{user `user`}}",
             "ssh_password": "{{user `password`}}",
-            "ssh_wait_timeout": "10m",
+            "ssh_wait_timeout": "20m",
             "shutdown_command": "echo '{{user `password`}}'|sudo -S shutdown -P now",
 
-            "boot_wait": "2s",
+            "boot_wait": "15s",
             "boot_command": [
                "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"   
             ]
